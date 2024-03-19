@@ -14,8 +14,18 @@ router.get(
     "/:id?",
     blogController.getBlog
   );
-
-
+  
+  router.delete(
+    "/:id",
+    authenticateMiddleware,
+    blogController.deleteBlog
+  );
+  
+  router.put(
+    "/:id",
+    authenticateMiddleware,
+    blogController.updateBlog
+  )
 
 
 

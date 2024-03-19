@@ -26,7 +26,30 @@ const getBlog = async (blogId) => {
     console.error("Error getting blog: ", error.message);
   }
 };
+
+const updateBlog = async (blogId, body) => {
+    try {
+      const updateBlog = await Blog.findByIdAndUpdate(blogId, body, {
+        new: true,
+      });
+      return updateBlog;
+    } catch (error) {
+      console.error("Error updating blog: ", error.message);
+    }
+  };
+  
+  const deleteBlog = async (blogId) => {
+    try {
+      console.log("oihi", blogId);
+      const deleteBlog = await Blog.findByIdAndDelete(blogId);
+      return deleteBlog;
+    } catch (error) {
+      console.error("Error deleting blog: ", error.message);
+    }
+  };
 module.exports = {
   createBlog,
   getBlog,
+  deleteBlog,
+  updateBlog
 };

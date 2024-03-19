@@ -28,7 +28,30 @@ const getBlog = async (req, res) => {
   };
 
 
-
+  const deleteBlog = async (req, res) => {
+    try {
+      let deleteBlog = await blogService.deleteBlog(req.params.id);
+      if (!deleteBlog) {
+        return res.status(404).json({ message: "Blog not found" });
+      }
+      if (deleteBlog) {
+        res.status(200).json({ delete: deleteBlog });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  };
+  
+  const updateBlog = async (req, res) => {
+    try {
+      let updateBlog = await blogService.updateBlog(req.params.id, req.body);
+      if (updateBlog) {
+        res.status(201).json({ movie: updateBlog });
+      }
+    } catch (error) {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  };
 
 
 
@@ -39,5 +62,7 @@ const getBlog = async (req, res) => {
 
 module.exports = {
     createBlog,
-    getBlog
+    getBlog,
+    deleteBlog,
+    updateBlog
 };
