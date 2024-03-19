@@ -53,7 +53,19 @@ const getBlog = async (req, res) => {
     }
   };
 
-
+  const createComment = async (req, res) => {
+    try {
+      let comment = await blogService.createComment(req.params.id, req.body);
+      if (comment) {
+        return res.status(200).json({ comment });
+      }
+      if (!comment) {
+        return res.status(404).json({ message: "Comment not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
 
 
 
@@ -64,5 +76,6 @@ module.exports = {
     createBlog,
     getBlog,
     deleteBlog,
-    updateBlog
+    updateBlog,
+    createComment
 };

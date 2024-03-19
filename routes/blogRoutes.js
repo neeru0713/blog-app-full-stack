@@ -27,6 +27,7 @@ router.get(
     blogController.updateBlog
   )
 
+  router.post("/:id/comments", authenticateMiddleware, blogController.createComment)
 
 
 module.exports = router;

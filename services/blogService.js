@@ -1,4 +1,5 @@
 const { Blog } = require("../models/Blog.js");
+const { Comment } = require("../models/Comment.js");
 
 async function createBlog(body) {
   //   console.log("User body: ", userBody);
@@ -17,9 +18,9 @@ const getBlog = async (blogId) => {
   try {
     let blog;
     if (blogId) {
-      blog = await Blog.findOne({ _id: blogId });
+      blog = await Blog.findOne({ _id: blogId }).populate("comments");
     } else {
-      blog = await Blog.find();
+      blog = await Blog.find().populate("comments");
     }
     return blog;
   } catch (error) {
@@ -47,9 +48,24 @@ const updateBlog = async (blogId, body) => {
       console.error("Error deleting blog: ", error.message);
     }
   };
+
+  const createComment = async (blogId, commentBody) => {
+    try {
+      console.log(blogId, commentBody);
+      const blog = await Blog.findOne({ _id: blogId });
+      const newComment = new Comment(commentBody);
+      const comment = await newComment.save();
+      blog.comments.push(comment);
+      await blog.save();
+      return comment;
+    } catch (error) {
+      console.error("Error creating Comment : ", error.message);
+    }
+  };
 module.exports = {
   createBlog,
   getBlog,
   deleteBlog,
-  updateBlog
+  updateBlog,
+  createComment
 };
