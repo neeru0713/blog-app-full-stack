@@ -10,7 +10,10 @@ router.post(
   blogController.createBlog
 );
 
-
+router.get(
+    "/:id?",
+    blogController.getBlog
+  );
 
 
 

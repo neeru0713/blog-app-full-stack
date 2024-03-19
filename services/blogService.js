@@ -1,6 +1,5 @@
 const { Blog } = require("../models/Blog.js");
 
-
 async function createBlog(body) {
   //   console.log("User body: ", userBody);
 
@@ -13,6 +12,21 @@ async function createBlog(body) {
     throw error;
   }
 }
+
+const getBlog = async (blogId) => {
+  try {
+    let blog;
+    if (blogId) {
+      blog = await Blog.findOne({ _id: blogId });
+    } else {
+      blog = await Blog.find();
+    }
+    return blog;
+  } catch (error) {
+    console.error("Error getting blog: ", error.message);
+  }
+};
 module.exports = {
-    createBlog,
+  createBlog,
+  getBlog,
 };

@@ -12,7 +12,20 @@ const createBlog = async (req, res) => {
   }
 };
 
-
+const getBlog = async (req, res) => {
+    try {
+    
+     let blog = await blogService.getBlog(req.params.id);
+      if (blog) {
+        return res.status(200).json({ blog });
+      }
+      if (!blog) {
+        return res.status(404).json({ message: "blog not found" });
+      }
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
 
 
 
@@ -26,5 +39,5 @@ const createBlog = async (req, res) => {
 
 module.exports = {
     createBlog,
- 
+    getBlog
 };
