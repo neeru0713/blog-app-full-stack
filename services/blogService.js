@@ -17,6 +17,7 @@ async function createBlog(body) {
 const getBlog = async (blogId) => {
   try {
     let blog;
+    // Show comments under each blog post - using populate method
     if (blogId) {
       blog = await Blog.findOne({ _id: blogId }).populate("comments");
     } else {
