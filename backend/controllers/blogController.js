@@ -1,4 +1,4 @@
-const { Blog } = require("../models/Blog");
+const { Blog } = require("../models/Blog.js");
 const blogService = require("../services/blogService.js");
 
 const createBlog = async (req, res) => {
