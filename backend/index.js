@@ -3,10 +3,11 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes.js");
 const blogRoutes = require("./routes/blogRoutes.js");
 
-
+const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
 app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
@@ -28,7 +29,7 @@ mongoose
     console.error("Error connecting to MongoDB:", err);
   });
 
-const PORT = 3000;
+const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
