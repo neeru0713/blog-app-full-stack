@@ -1,6 +1,8 @@
 import { React, useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 const Blog = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publicationDate, setPublicationDate] = useState("");
@@ -44,6 +46,7 @@ const Blog = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        navigate("/");
         console.log("blogs are created successful!", data);
       })
       .catch((error) => {
