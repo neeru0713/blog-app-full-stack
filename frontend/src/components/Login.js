@@ -43,21 +43,21 @@ const Login = () => {
   return (
     <div className="w-[300px] m-auto mt-[200px] ">
       <h1 className="text-center text-xl font-bold  text-blue-600 m-2 text-3xl">Login</h1>
-      <form className="register-form flex flex-col gap-4 border h-full border-black p-10 hover:bg-blue-100 cursor-pointer shadow-md shadow-blue-400">
+      <form className="register-form flex flex-col gap-4 border h-full border shadow-md shadow-blue-400-black p-10  cursor-pointer">
         <input
           type="email"
-          label="Email"
           placeholder="email"
           name="email"
           onChange={inputChangeHandler}
+          value={email}
         />
 
         <input
           type="password"
-          label="Password"
           placeholder="password"
           name="password"
           onChange={inputChangeHandler}
+          value={password}
         />
 
         <button

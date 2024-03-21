@@ -23,7 +23,7 @@ async function createUser(userBody) {
 }
 
 
-const generateToken = (userId, secret = "blogappfullstack") => {
+const generateToken = (userId, secret = "taskmanagementsecret") => {
   const payload = { _id: userId.toString()};
   const token = jwt.sign(payload, secret);
   return token;

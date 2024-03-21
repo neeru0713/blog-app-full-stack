@@ -46,7 +46,7 @@ const getBlog = async (req, res) => {
     try {
       let updateBlog = await blogService.updateBlog(req.params.id, req.body);
       if (updateBlog) {
-        res.status(201).json({ movie: updateBlog });
+        res.status(201).json({ blog: updateBlog });
       }
     } catch (error) {
       res.status(500).json({ error: "Internal Server Error" });
