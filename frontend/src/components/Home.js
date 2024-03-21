@@ -5,7 +5,7 @@ const Home = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/blogs")
+    fetch("https://blog-app-full-stack.onrender.com/api/blogs")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");

@@ -36,7 +36,7 @@ const Blog = () => {
     };
 
     const token = localStorage.getItem("token");
-    fetch("http://localhost:8080/api/blogs", {
+    fetch("https://blog-app-full-stack.onrender.com/api/blogs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

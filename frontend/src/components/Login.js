@@ -23,7 +23,7 @@ const Login = () => {
       password: password,
     };
 
-    fetch("http://localhost:8080/api/auth/login", {
+    fetch("https://blog-app-full-stack.onrender.com/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
