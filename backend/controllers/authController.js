@@ -8,7 +8,7 @@ const register = async (req, res) => {
     let resObj = {
       user: newUser,
       tokens: tokens,
-      message: "Congratulations and welcome to movieApp",
+      message: "Congratulations and welcome to blogApp",
     };
     res.status(201).json(resObj);
   } catch (error) {

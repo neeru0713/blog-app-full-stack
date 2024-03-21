@@ -41,9 +41,9 @@ const Login = () => {
   };
 
   return (
-    <div className="w-[300px] m-auto mt-[200px]">
-      <h1 className="text-center text-xl font-bold text-gray-800 m-2">Login</h1>
-      <form className="register-form flex flex-col gap-4 border h-full border-black p-10">
+    <div className="w-[300px] m-auto mt-[200px] ">
+      <h1 className="text-center text-xl font-bold  text-blue-600 m-2 text-3xl">Login</h1>
+      <form className="register-form flex flex-col gap-4 border h-full border-black p-10 hover:bg-blue-100 cursor-pointer shadow-md shadow-blue-400">
         <input
           type="email"
           label="Email"
@@ -62,7 +62,7 @@ const Login = () => {
 
         <button
           onClick={signUpHandler}
-          className="border border-gray-400 hover:bg-blue-500 hover:text-white font-semibold rounded-xl py-1"
+          className="border border-gray-400 hover:bg-blue-700 hover:text-white font-semibold rounded-xl py-1"
         >
           Sign in
         </button>

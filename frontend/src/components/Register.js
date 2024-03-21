@@ -6,9 +6,9 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const inputChangeHandler = (event) => {
-    
     const value = event.target.value;
     const name = event.target.name;
+
     if (name === "username") {
       setUsername(value);
     }
@@ -21,7 +21,7 @@ const Register = () => {
   };
 
   const signUpHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const postData = {
       username: username,
       email: email,
@@ -46,10 +46,10 @@ const Register = () => {
 
   return (
     <div className="w-[300px] m-auto mt-[200px]">
-      <h1 className="text-center text-xl font-bold text-gray-800 m-2">
+      <h1 className="text-center text-xl font-bold text-blue-600 m-2 text-3xl">
         Register
       </h1>
-      <form className="register-form flex flex-col gap-4 border h-full border-black p-10">
+      <form className="register-form flex flex-col gap-4 border h-full border-black p-10 hover:bg-blue-100 cursor-pointer shadow-md shadow-blue-400">
         <input
           type="text"
           label="Username"
@@ -76,7 +76,7 @@ const Register = () => {
 
         <button
           onClick={signUpHandler}
-          className="border border-gray-400 hover:bg-blue-500 hover:text-white font-semibold rounded-xl py-1"
+          className="border border-gray-400 hover:bg-blue-700 hover:text-white font-semibold rounded-xl py-1"
         >
           Sign up
         </button>
