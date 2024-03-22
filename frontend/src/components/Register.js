@@ -1,6 +1,8 @@
 import { React, useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +39,7 @@ const Register = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        navigate("/Login");
         console.log("Registration successful!", data);
       })
       .catch((error) => {

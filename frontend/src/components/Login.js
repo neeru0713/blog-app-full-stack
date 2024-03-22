@@ -1,8 +1,12 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
+import {  useNavigate } from "react-router-dom";
+import { UserContext} from "../App";
 
 const Login = () => {
+const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { user, setUser } = useContext(UserContext);
 
   const inputChangeHandler = (event) => {
     const value = event.target.value;
@@ -32,7 +36,9 @@ const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        navigate("/Home");
         localStorage.setItem("token", data?.token);
+        setUser(data?.user)
         console.log("Registration successful!", data);
       })
       .catch((error) => {
