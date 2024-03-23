@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
   const navigate = useNavigate();
@@ -7,6 +7,10 @@ const Blog = () => {
   const [author, setAuthor] = useState("");
   const [publicationDate, setPublicationDate] = useState("");
   const [content, setContent] = useState("");
+  const [isEmptyTitle, setIsEmptyTitle] = useState(false);
+  const [isEmptyAuthor, setIsEmptyAuthor] = useState(false);
+  const [isEmptyPublicationDate, setIsEmptyPublicationDate] = useState(false);
+  const [isEmptyContent, setIsEmptyContent] = useState(false);
 
   const inputChangeHandler = (event) => {
     const value = event.target.value;
@@ -28,6 +32,40 @@ const Blog = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
+    if (title === "") {
+      setIsEmptyTitle(true);
+    
+    } else {
+      setIsEmptyTitle(false);
+    }
+
+    if (author === "") {
+      setIsEmptyAuthor(true);
+      
+    } else {
+      setIsEmptyAuthor(false);
+    }
+
+    if (publicationDate === "") {
+      setIsEmptyPublicationDate(true);
+      
+    } else {
+      setIsEmptyPublicationDate(false);
+    }
+
+    if (content === "") {
+      setIsEmptyContent(true);
+    
+    } else {
+      setIsEmptyContent(false);
+    }
+    if(title === "" || author === "" || publicationDate === "" || content === ""){
+      return;
+    }
+
+
+
     const postData = {
       title: title,
       author: author,
@@ -67,7 +105,14 @@ const Blog = () => {
             name="title"
             onChange={inputChangeHandler}
             value={title}
+            required
           />
+
+          {isEmptyTitle && (
+            <div className="bg-red-500 text-white font-semibold border rounded-lg p-2">
+              Title cannot be empty
+            </div>
+          )}
 
           <input
             type="text"
@@ -75,7 +120,13 @@ const Blog = () => {
             name="author"
             onChange={inputChangeHandler}
             value={author}
+            required
           />
+          {isEmptyAuthor && (
+            <div className="bg-red-500 text-white font-semibold border rounded-lg p-2">
+              Author cannot be empty
+            </div>
+          )}
 
           <input
             type="date"
@@ -83,7 +134,14 @@ const Blog = () => {
             name="publicationDate"
             onChange={inputChangeHandler}
             value={publicationDate}
+            required
           />
+
+          {isEmptyPublicationDate && (
+            <div className="bg-red-500 text-white font-semibold border rounded-lg p-2">
+              Date cannot be empty
+            </div>
+          )}
 
           <textarea
             className="border border-gray-400 rounded-md p-1 h-20"
@@ -92,9 +150,16 @@ const Blog = () => {
             name="content"
             onChange={inputChangeHandler}
             value={content}
+            required
           />
 
+          {isEmptyContent && (
+            <div className="bg-red-500 text-white font-semibold border rounded-lg p-2">
+              Content cannot be empty
+            </div>
+          )}
           <button
+            type="submit"
             onClick={submitHandler}
             className="border border-gray-400 hover:bg-blue-500 hover:text-white font-semibold rounded-xl py-1"
           >
